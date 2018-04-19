@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="kubeApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+      pre {
+        padding: 10px;
+        background-color: lightgrey;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body ng-controller="KubeController as app">
+    <h1>Kube App</h1>
+    <div>
+      <h2>API Response</h2>
+      <button ng-click="app.contact()">Contact API</button>
+      <pre>{{ app.apiData | json }}</pre>
+      <button ng-click="app.crashAPI()" style="background-color: orangered">DANGER - CRASH API</button>
+    </div>
+    <div>
+      <h2>API Worker</h2>
+      <p>Launch a number of concurrent work requests.  "Work" is judged by the number of dots in the Message String</p>
+      <label>Number of Jobs</label>
+      <input type="number" ng-model="app.work.count">
+      <label>Message String</label>
+      <input type="text" ng-model="app.work.msg">
+      <button ng-click="app.doWork()">Launch Work</button>
+      <h3>Reply</h3>
+      <pre>{{ app.workReply | json }}</pre>
+      <button ng-click="app.stopPolling()" ng-if="app.stop">Stop Polling</button>
+      <h3>Results</h3>
+      <pre>{{ app.workResults | json }}</pre>
+    </div>
+  </body>
+</html>

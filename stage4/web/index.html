@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app="kubeApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+      pre {
+        padding: 10px;
+        background-color: lightgrey;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body ng-controller="KubeController as app">
+    <h1>Kube App</h1>
+    <div>
+      <h2>API Response</h2>
+      <button ng-click="app.contact()">Contact API</button>
+      <pre>{{ app.apiData | json }}</pre>
+      <button ng-click="app.crashAPI()" style="background-color: orangered">DANGER - CRASH API</button>
+    </div>
+  </body>
+</html>
